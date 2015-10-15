@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3372618}
   - 64: {fileID: 6417254}
   - 23: {fileID: 2344196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Treasure1
   m_TagString: Treasure
   m_Icon: {fileID: 0}
@@ -83,6 +83,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Treasure
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

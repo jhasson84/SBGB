@@ -18,6 +18,7 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 	
+
 	public int columns = 10;
 	public int rows = 10;
 	public int scale = 10;

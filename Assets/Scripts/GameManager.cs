@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
 	
 	public static GameManager instance = null;
 	public BoardManager boardScript;
+	public Text levelCounter;
 	
 	private int level = 1;
+
 	
 	
 	
@@ -27,10 +30,11 @@ public class GameManager : MonoBehaviour {
 	void InitGame () 
 	{
 		boardScript.SetupScene (level);
+		levelCounter.text = "LEVEL " + level;
 	}
 	
 	// Update is called once per frame
 	void Update() {
-		
+
 	}
-}
+	}
