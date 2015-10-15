@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &136734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 495498}
+  - 114: {fileID: 11405986}
+  - 114: {fileID: 11444520}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &495498
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11405986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab38e9e7ce9a464e88290bd1781bf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardScript: {fileID: 0}
+--- !u!114 &11444520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086c04d723e484325a6f5fb18c6a003e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  columns: 10
+  rows: 10
+  scale: 10
+  treasureCount:
+    minimum: 1
+    maximum: 5
+  homeBase: {fileID: 139670, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
+  oceanTiles:
+  - {fileID: 101932, guid: c94193c6bba3244369c8d51a51e6fbef, type: 2}
+  islandTiles:
+  - {fileID: 139670, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
+  treasureTiles:
+  - {fileID: 105626, guid: 11df857f9e57241b7b403a0f86a339f5, type: 2}
+  enemyTiles:
+  - {fileID: 0}
+  outerWallTiles:
+  - {fileID: 185438, guid: 10586ccbc998e4923927bbdedd4f4522, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: treasureTiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: homeBase
+      value: 
+      objectReference: {fileID: 139670, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: treasureTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 105626, guid: 11df857f9e57241b7b403a0f86a339f5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: outerWallTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 185438, guid: 10586ccbc998e4923927bbdedd4f4522, type: 2}
+    - target: {fileID: 0}
+      propertyPath: islandTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 139670, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 136734}
+  m_IsPrefabParent: 1

@@ -20,6 +20,7 @@ public class BoardManager : MonoBehaviour {
 	
 	public int columns = 10;
 	public int rows = 10;
+	public int scale = 10;
 
 	public Count treasureCount = new Count (1, 5); //Lower and upper limit for our random number of food per level.
 
@@ -41,8 +42,8 @@ public class BoardManager : MonoBehaviour {
 		//Create decomposed world of Vector3 positions
 		
 		for (int x =1; x < columns -1; x++) {
-			for(int y=1; y< rows-1;y++){
-				gridPositions.Add (new Vector3(x,y,0f));
+			for(int z=1; z< rows-1;z++){
+				gridPositions.Add (new Vector3(x*scale,0f,z*scale));
 			}
 		}
 	}
@@ -52,14 +53,14 @@ public class BoardManager : MonoBehaviour {
 	{
 		boardHolder = new GameObject ("Board").transform;
 		for (int x=-1; x < columns+1; x++) {
-			for(int y=-1; y < rows+1; y++)
+			for(int z=-1; z < rows+1; z++)
 			{
 				GameObject toInstantiate = oceanTiles[Random.Range(0,oceanTiles.Length)];
 				
-				if(x == -1 || x == columns || y == -1 || y == rows) // check if along an edge
+				if(x == -1 || x == columns || z == -1 || z == rows) // check if along an edge
 					toInstantiate = outerWallTiles[Random.Range(0,outerWallTiles.Length)];
 				
-				GameObject instance = Instantiate(toInstantiate, new Vector3 (x,y,0f), Quaternion.identity) as GameObject;
+				GameObject instance = Instantiate(toInstantiate, new Vector3 (x*scale,0f,z*scale), Quaternion.identity) as GameObject;
 				instance.transform.SetParent(boardHolder);
 			}
 		}
@@ -70,6 +71,7 @@ public class BoardManager : MonoBehaviour {
 	{
 		int randomIndex = Random.Range (0, gridPositions.Count);
 		Vector3 randomPosition = gridPositions [randomIndex]; 
+		randomPosition.y += 1f;
 		gridPositions.RemoveAt (randomIndex);
 		return randomPosition;
 	}
@@ -96,6 +98,6 @@ public class BoardManager : MonoBehaviour {
 		int enemyCount = (int)Mathf.Log (level, 2f);
 		LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
 		//Exit in upper right hand corner
-		Instantiate (homeBase, new Vector3 (columns - 1, rows - 1, 0f), Quaternion.identity);
+		Instantiate (homeBase, new Vector3 ((columns - 1)*scale, 1f, (rows - 1)*scale), Quaternion.identity);
 	}
 }
