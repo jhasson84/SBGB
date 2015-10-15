@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3385458}
   - 64: {fileID: 6441432}
   - 23: {fileID: 2395880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Base
   m_TagString: HomeBase
   m_Icon: {fileID: 0}
@@ -83,6 +83,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: HomeBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
