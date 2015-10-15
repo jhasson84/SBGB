@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Treasure
+  - HomeBase
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 752149827
+    locked: 0
+  - name: Items
+    uniqueID: 2704190055
+    locked: 0
+  - name: Units
+    uniqueID: 3338997623
     locked: 0
