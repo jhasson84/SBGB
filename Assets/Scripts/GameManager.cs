@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public BoardManager boardScript;
 	public Text levelCounter;
+	public Text shipGoldCounter;
+	public Text totalGoldCounter;
 	
 	private int level = 1;
 
