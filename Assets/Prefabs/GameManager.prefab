@@ -42,6 +42,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardScript: {fileID: 0}
   levelCounter: {fileID: 11484440, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
+  shipGoldCounter: {fileID: 0}
+  totalGoldCounter: {fileID: 0}
 --- !u!114 &11444520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,7 +69,7 @@ MonoBehaviour:
   treasureTiles:
   - {fileID: 105626, guid: 11df857f9e57241b7b403a0f86a339f5, type: 2}
   enemyTiles:
-  - {fileID: 0}
+  - {fileID: 183524, guid: 095ada20ec404d2499dd4ebc82f95541, type: 2}
   outerWallTiles:
   - {fileID: 185438, guid: 10586ccbc998e4923927bbdedd4f4522, type: 2}
 --- !u!1001 &100100000
@@ -118,3 +120,4 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136734}
   m_IsPrefabParent: 1
+  m_IsExploded: 1

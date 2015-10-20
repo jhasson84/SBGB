@@ -96,9 +96,10 @@ public class BoardManager : MonoBehaviour {
 		InitialiseList ();
 		//Layout Level Objects
 		LayoutObjectAtRandom (treasureTiles, treasureCount.minimum, treasureCount.maximum);
-		int enemyCount = (int)Mathf.Log (level, 2f);
+		int enemyCount = 2;//(int)Mathf.Log (level, 2f);
 		LayoutObjectAtRandom (enemyTiles, enemyCount, enemyCount);
 		//Exit in upper right hand corner
 		Instantiate (homeBase, new Vector3 ((columns - 1)*scale, 1f, (rows - 1)*scale), Quaternion.identity);
+
 	}
 }
