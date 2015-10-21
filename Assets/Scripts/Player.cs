@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
   private float lastFired;
   public float timeBetweenShots, fireRadius, speed, satRadius;
   public Transform dest;
-  Vector3[] path;
-  Vector3 currentWaypoint;
+  public Vector3[] path;
+  public Vector3 currentWaypoint;
   int targetIndex;
   
   void Update ()
@@ -22,14 +22,16 @@ public class Player : MonoBehaviour
     if(Input.GetButtonDown("Fire1") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
     {
       dest.position = hit.point;
-      PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
+      //PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
       
     }
-       
+    if(TDistanceAway(dest) > satRadius)
+      transform.position = Vector3.MoveTowards(transform.position, dest.position, speed * Time.deltaTime);
       
   }
   public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
   {
+    print("onpath");
     if (pathSuccessful)
     {
       path = newPath;
@@ -97,7 +99,15 @@ public class Player : MonoBehaviour
     //when trigger with
     print(c.name + c.tag);
     if(c.gameObject.tag.Equals("Enemy") && ReadyToFire())
+    {
       Shoot(c.gameObject);
+      dest.position = transform.position;
+    }
+    if(c.gameObject.tag.Equals("Treasure"))
+    {
+      Destroy(c.gameObject);
+    }
+    
   }
 }
 
