@@ -21,12 +21,13 @@ public class Player : MonoBehaviour
     RaycastHit hit;
     if(Input.GetButtonDown("Fire1") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
     {
-      dest.position = hit.point;
-      //PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
+      dest.position = new Vector3(hit.point.x, 1, hit.point.z) ;
+
+      PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
       
     }
-    if(TDistanceAway(dest) > satRadius)
-      transform.position = Vector3.MoveTowards(transform.position, dest.position, speed * Time.deltaTime);
+    //if(TDistanceAway(dest) > satRadius)
+      //transform.position = Vector3.MoveTowards(transform.position, dest.position, speed * Time.deltaTime);
       
   }
   public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour
     {
       Shoot(c.gameObject);
       dest.position = transform.position;
+      Destroy(c.gameObject, 1);
     }
     if(c.gameObject.tag.Equals("Treasure"))
     {
