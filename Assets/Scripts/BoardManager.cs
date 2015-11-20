@@ -33,7 +33,7 @@ public class BoardManager : MonoBehaviour {
 	public GameObject[] enemyTiles;
 	public GameObject[] outerWallTiles;
 	public List<GameObject> instantiatedObjects;
-	public List<GameObject> oceanTiles;
+	public List<GameObject> oceanTileList;
 	
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3>(); //A list of possible locations to place tiles.
@@ -67,7 +67,7 @@ public class BoardManager : MonoBehaviour {
 				GameObject instance = Instantiate(toInstantiate, new Vector3 (x*scale,0f,z*scale), Quaternion.identity) as GameObject;
 				instance.transform.SetParent(boardHolder);
 				if(!(x == -1 || x == columns || z == -1 || z == rows))
-					oceanTiles.Add(instance);
+					oceanTileList.Add(instance);
 			}
 		}
 	}
@@ -103,7 +103,7 @@ public class BoardManager : MonoBehaviour {
 
 	public List<GameObject> getOceanTiles()
 	{
-		return oceanTiles;
+		return oceanTileList;
 	}
 
 	//Build scene according to level number
