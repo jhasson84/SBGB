@@ -6,7 +6,11 @@ public class Player : MonoBehaviour
   public GameObject explosion;
   private GameObject target;
   private float lastFired;
-  public float timeBetweenShots, fireRadius;
+  public float timeBetweenShots, fireRadius, speed, satRadius;
+  public Transform dest;
+  public Vector3[] path;
+  public Vector3 currentWaypoint;
+  int targetIndex;
   
   void Update ()
   {
@@ -14,9 +18,47 @@ public class Player : MonoBehaviour
   }
   void Move()
   {
-    
+    RaycastHit hit;
+    if(Input.GetButtonDown("Fire1") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+    {
+      dest.position = new Vector3(hit.point.x, 1, hit.point.z) ;
+
+      PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
+      
+    }
+    //if(TDistanceAway(dest) > satRadius)
+      //transform.position = Vector3.MoveTowards(transform.position, dest.position, speed * Time.deltaTime);
+      
   }
-  void Shoot(GameObject obj)
+  public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+  {
+    print("onpath");
+    if (pathSuccessful)
+    {
+      path = newPath;
+      StopCoroutine("FollowPath");
+      StartCoroutine("FollowPath");
+    }
+  }
+  IEnumerator FollowPath()
+  {
+    targetIndex = 0;
+    currentWaypoint = path[targetIndex];
+    
+    while(true)
+    {
+      if(VDistanceAway(currentWaypoint) < satRadius)
+      {
+        targetIndex++;
+        if(targetIndex >= path.Length)
+          yield break;
+        currentWaypoint = path[targetIndex];
+      }
+      transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+      yield return null;
+    }
+  }
+  void Shoot(GameObject obj) 
   {
     var tar = Target(obj);
     //Create explosion particle system at target location and destroy after it is done
@@ -44,12 +86,30 @@ public class Player : MonoBehaviour
   {
     return (a.transform.position - transform.position).magnitude;
   }
+  float TDistanceAway(Transform a)
+  {
+    return (a.position - transform.position).magnitude;
+  }
+  float VDistanceAway(Vector3 a)
+  {
+    return (a - transform.position).magnitude;
+  }
+ 
   void OnTriggerStay(Component c)
   {
     //when trigger with
     print(c.name + c.tag);
     if(c.gameObject.tag.Equals("Enemy") && ReadyToFire())
+    {
       Shoot(c.gameObject);
+      dest.position = transform.position;
+      Destroy(c.gameObject, 1);
+    }
+    if(c.gameObject.tag.Equals("Treasure"))
+    {
+      Destroy(c.gameObject);
+    }
+    
   }
 }
 
