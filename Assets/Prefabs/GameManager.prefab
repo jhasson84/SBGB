@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 495498}
   - 114: {fileID: 11405986}
   - 114: {fileID: 11444520}
+  - 114: {fileID: 11491502}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -41,6 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardScript: {fileID: 0}
+  turnScript: {fileID: 0}
   levelCounter: {fileID: 11484440, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
   shipGoldCounter: {fileID: 0}
   totalGoldCounter: {fileID: 0}
@@ -55,13 +57,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086c04d723e484325a6f5fb18c6a003e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 10
-  rows: 10
+  columns: 100
+  rows: 100
   scale: 10
   treasureCount:
     minimum: 1
     maximum: 5
   homeBase: {fileID: 139670, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
+  player: {fileID: 169312, guid: e032329d4d099684e99a14dd68c6d102, type: 2}
   oceanTiles:
   - {fileID: 101932, guid: c94193c6bba3244369c8d51a51e6fbef, type: 2}
   islandTiles:
@@ -72,6 +75,18 @@ MonoBehaviour:
   - {fileID: 183524, guid: 095ada20ec404d2499dd4ebc82f95541, type: 2}
   outerWallTiles:
   - {fileID: 185438, guid: 10586ccbc998e4923927bbdedd4f4522, type: 2}
+  instantiatedObjects: []
+--- !u!114 &11491502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af39a752df05afa478d998339385a97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -101,7 +116,7 @@ Prefab:
       objectReference: {fileID: 139670, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
     - target: {fileID: 0}
       propertyPath: columns
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: HUD
@@ -116,8 +131,15 @@ Prefab:
       value: 
       objectReference: {fileID: 11484440, guid: 5175c717b0aa54751bbe3d0feb9f6b96,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: rows
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 169312, guid: e032329d4d099684e99a14dd68c6d102, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136734}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

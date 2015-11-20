@@ -103,9 +103,9 @@ MonoBehaviour:
   explosion: {fileID: 168296, guid: acb57e417079b42df9afbd5fc05bfbe8, type: 2}
   timeBetweenShots: 2
   fireRadius: 1
-  speed: 10
-  satRadius: .100000001
-  dest: {fileID: 801524812}
+  speed: 0
+  satRadius: 0
+  dest: {fileID: 0}
   path: []
   currentWaypoint: {x: 0, y: 0, z: 0}
 --- !u!65 &200404739
