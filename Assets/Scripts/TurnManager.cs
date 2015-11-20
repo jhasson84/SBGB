@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour {
 
-	static int currentTurnCounter = 0;
-	static List<GameObject> allObjects;
+	static int currentTurnCounter;
+	static List<Turn> allObjects;
 
 	public static TurnManager instance = null;
 	
@@ -15,15 +15,19 @@ public class TurnManager : MonoBehaviour {
 			instance = this;
 		else if (instance != this)
 			Destroy (gameObject);
+
+		int currentTurnCounter = 0;
 	}
 
 	public void initObjects(List<GameObject> insertedObjects)
 	{
-		allObjects = insertedObjects;
+		foreach (GameObject o in insertedObjects)
+			allObjects.Add (o.GetComponent<Turn> ());
 	}
 
 	public static void nextTurn()
 	{
+		allObjects [currentTurnCounter].StartTurn ();
 		currentTurnCounter++;
 		if (currentTurnCounter > allObjects.Count) {
 			currentTurnCounter = 0;
