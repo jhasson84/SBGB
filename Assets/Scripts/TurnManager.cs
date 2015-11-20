@@ -16,13 +16,17 @@ public class TurnManager : MonoBehaviour {
 		else if (instance != this)
 			Destroy (gameObject);
 
+
 		int currentTurnCounter = 0;
 	}
 
 	public void initObjects(List<GameObject> insertedObjects)
 	{
+		allObjects = new List<Turn>();
+
 		foreach (GameObject o in insertedObjects)
 			allObjects.Add (o.GetComponent<Turn> ());
+
 	}
 
 	public static void nextTurn()

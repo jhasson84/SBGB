@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour {
 		boardScript.SetupScene (level);
 		turnScript.initObjects (boardScript.getObjectList ());
 		gridScript.gridWorldSize = new Vector2(boardScript.columns * boardScript.scale, boardScript.rows * boardScript.scale);
-		gridScript.nodeRadius = boardScript.scale;
+		gridScript.nodeRadius = 1/boardScript.scale;
+		gridScript.CreateGrid ();
 		levelCounter.text = "LEVEL " + level;
 	}
 	
