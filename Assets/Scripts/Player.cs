@@ -69,7 +69,6 @@ public class Player : Turn
     //Create explosion particle system at target location and destroy after it is done
     var o = Instantiate(explosion, tar.position, tar.rotation);
     Destroy(o, 2);
-    lastFired = Time.time;
   }
   /*
     Only changes target if previous target is outside 
@@ -82,10 +81,6 @@ public class Player : Turn
     if(GODistanceAway(target) > fireRadius)
       target = o;
     return target.transform;
-  }
-  bool ReadyToFire()
-  {
-    return (Time.time - lastFired > timeBetweenShots);
   }
   float GODistanceAway(GameObject a)
   {
@@ -104,9 +99,10 @@ public class Player : Turn
   {
     //when trigger with
     print(c.name + c.tag);
-    if(c.gameObject.tag.Equals("Enemy") && ReadyToFire())
+    if(c.gameObject.tag.Equals("Enemy") && canAttack)
     {
-      movesLeft--;
+      movesLeft-= 2;
+      canAttack = false;
       Shoot(c.gameObject);
       dest.position = transform.position;
       Destroy(c.gameObject, 1);
