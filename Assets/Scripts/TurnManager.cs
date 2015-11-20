@@ -15,7 +15,7 @@ public class TurnManager : MonoBehaviour {
 	public void nextTurn()
 	{
 		currentTurnCounter++;
-		if (currentTurnCounter > allObjects.Count ()) {
+		if (currentTurnCounter > allObjects.Count) {
 			currentTurnCounter = 0;
 		}
 	}

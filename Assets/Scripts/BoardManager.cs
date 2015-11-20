@@ -87,9 +87,9 @@ public class BoardManager : MonoBehaviour {
 		for (int i = 0; i < objectCount; i++) {
 			Vector3 randomPosition = RandomPosition(); //from the decomposed board, removed so not used again
 			GameObject tileChoice = tileArray[Random.Range (0, tileArray.Length)]; //random tile from arg array
-			GameObject thing = Instantiate(tileChoice,randomPosition, Quaternion.identity);
-			if(thing.tag = "Enemy")
-				instantiatedObjects.push(thing);
+			GameObject thing = (GameObject)Instantiate(tileChoice,randomPosition, Quaternion.identity);
+			if(thing.tag.Equals("Enemy"))
+				instantiatedObjects.Add(thing);
 		}
 	}
 
@@ -104,7 +104,8 @@ public class BoardManager : MonoBehaviour {
 		BoardSetup ();
 		InitialiseList ();
 		//Player in lower left corner
-		instantiatedObjects.push(Instantiate (player, new Vector3 (columns+1, 1f, rows+1, Quaternion.identity)));
+		GameObject thing = (GameObject) Instantiate(player, new Vector3 (columns + 1, 1f, rows + 1), Quaternion.identity);
+		instantiatedObjects.Add(thing);
 		//Layout Level Objects
 		LayoutObjectAtRandom (treasureTiles, treasureCount.minimum, treasureCount.maximum);
 		int enemyCount = 2;//(int)Mathf.Log (level, 2f);
