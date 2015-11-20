@@ -38,6 +38,16 @@ public class BoardManager : MonoBehaviour {
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3>(); //A list of possible locations to place tiles.
 
+	public static BoardManager instance = null;
+
+	void Awake()
+	{
+	if (instance == null)
+		instance = this;
+	else if (instance != this)
+		Destroy (gameObject);
+	}
+
 	//Clears our list gridPositions and prepares it to generate a new board.
 	void InitialiseList()
 	{
