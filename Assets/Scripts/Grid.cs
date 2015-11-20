@@ -15,7 +15,7 @@ public class Grid : MonoBehaviour {
 
 	void Awake() {
 		nodeDiameter = nodeRadius*2;
-		gridSizeX = Mathf.RoundToInt(gridWorldSize.x/nodeDiameter);
+		gridSizeX = Mathf.RoundToInt (gridWorldSize.x/nodeDiameter);
 		gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
 		CreateGrid();
 	}
@@ -28,11 +28,11 @@ public class Grid : MonoBehaviour {
 
 	void CreateGrid() {
 		grid = new Node[gridSizeX,gridSizeY];
-		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.forward * gridWorldSize.y/2;
+		//Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.forward * gridWorldSize.y/2;
 
 		for (int x = 0; x < gridSizeX; x ++) {
 			for (int y = 0; y < gridSizeY; y ++) {
-				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
+				Vector3 worldPoint = Vector3.right * (x * nodeDiameter) + Vector3.forward * (y * nodeDiameter);
 				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
 				grid[x,y] = new Node(walkable,worldPoint, x,y);
 			}

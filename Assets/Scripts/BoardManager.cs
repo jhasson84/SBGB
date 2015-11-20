@@ -37,12 +37,11 @@ public class BoardManager : MonoBehaviour {
 	
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3>(); //A list of possible locations to place tiles.
-	
+
 	//Clears our list gridPositions and prepares it to generate a new board.
 	void InitialiseList()
 	{
 		gridPositions.Clear ();
-		
 		//Create decomposed world of Vector3 positions
 		
 		for (int x =1; x < columns -1; x++) {
@@ -51,7 +50,8 @@ public class BoardManager : MonoBehaviour {
 			}
 		}
 	}
-	
+
+
 	//Setup walls and floor of game board
 	void BoardSetup()
 	{
