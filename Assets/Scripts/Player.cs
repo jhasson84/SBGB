@@ -11,13 +11,19 @@ public class Player : Turn
   public Vector3[] path;
   public Vector3 currentWaypoint;
   int targetIndex;
-  
+  void Awake()
+  {
+    dest = new GameObject("dest").transform;
+  }
   void Update ()
   {
     if(active)
     {
       if(movesLeft < 1)
+      {
         EndTurn();
+        StopCoroutine("FollowPath");
+      }
       Move();
       
     }
@@ -104,6 +110,7 @@ public class Player : Turn
       movesLeft-= 2;
       canAttack = false;
       Shoot(c.gameObject);
+      StopCoroutine("FollowPath");
       dest.position = transform.position;
       Destroy(c.gameObject, 1);
     }
