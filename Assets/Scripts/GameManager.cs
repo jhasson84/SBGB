@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 	
 	public static GameManager instance = null;
 	public BoardManager boardScript;
+	public TurnManager turnScript;
 	public Text levelCounter;
 	public Text shipGoldCounter;
 	public Text totalGoldCounter;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour {
 		
 		DontDestroyOnLoad (gameObject);
 		boardScript = GetComponent<BoardManager> ();
+		turnScript = GetComponent<TurnManager> ();
 		InitGame ();
 	}
 	
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour {
 	void InitGame () 
 	{
 		boardScript.SetupScene (level);
+		turnScript.initObjects (boardScript.getObjectList ());
 		levelCounter.text = "LEVEL " + level;
 	}
 	
