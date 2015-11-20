@@ -13,12 +13,6 @@ public class Grid : MonoBehaviour {
 	float nodeDiameter;
 	int gridSizeX, gridSizeY;
 
-	void Awake() {
-		nodeDiameter = nodeRadius*2;
-		gridSizeX = Mathf.RoundToInt (gridWorldSize.x/nodeDiameter);
-		gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
-	}
-
 	void Start()
 	{
 		CreateGrid();
@@ -31,6 +25,9 @@ public class Grid : MonoBehaviour {
 	}
 
 	public void CreateGrid() {
+		nodeDiameter = nodeRadius*2;
+		gridSizeX = Mathf.RoundToInt (gridWorldSize.x/nodeDiameter);
+		gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
 		grid = new Node[gridSizeX,gridSizeY];
 		//Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.forward * gridWorldSize.y/2;
 
@@ -65,15 +62,29 @@ public class Grid : MonoBehaviour {
 	
 
 	public Node NodeFromWorldPoint(Vector3 worldPosition) {
-                float percentX = (worldPosition.x + gridWorldSize.x/16) / gridWorldSize.x;
-                float percentY = (worldPosition.z + gridWorldSize.y/16) / gridWorldSize.y;
+		/*
+                float percentX = (worldPosition.x + gridWorldSize.x/2) / gridWorldSize.x;
+                float percentY = (worldPosition.z + gridWorldSize.y/2) / gridWorldSize.y;
                 percentX = Mathf.Clamp01(percentX);
                 percentY = Mathf.Clamp01(percentY);
 
 		int x = Mathf.RoundToInt((gridSizeX-1) * percentX);
-		int y = Mathf.RoundToInt((gridSizeY-1) * percentY);
-		return grid[x,y];
+		int y = Mathf.RoundToInt((gridSizeY-1) * percentY); */
+		int x = Mathf.RoundToInt (worldPosition.x / nodeDiameter);
+		int y = Mathf.RoundToInt (worldPosition.z / nodeDiameter);
+		if (x >= grid.GetLength (0))
+			x = grid.GetLength (0) - 1;
+		if (x < 0)
+			x = 0;
+		if (y >= grid.GetLength (1))
+			y = grid.GetLength (1) - 1;
+		if (y < 0)
+			y = 0;
+
+	return grid[x,y];
 	}
+
+
   public List<Node> path;
 
 	void OnDrawGizmos() {

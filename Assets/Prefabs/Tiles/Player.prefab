@@ -100,11 +100,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   canAttack: 1
-  movesLeft: 5
+  movesLeft: 90000000
   explosion: {fileID: 168296, guid: acb57e417079b42df9afbd5fc05bfbe8, type: 2}
   timeBetweenShots: 2
   fireRadius: 1
-  speed: 5
+  speed: 1063
   satRadius: .100000001
   dest: {fileID: 0}
   path: []
@@ -122,7 +122,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 063df45b732b28949aa3ba6421398fa7, type: 2}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 5
+      value: 1063
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: satRadius
@@ -130,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movesLeft
-      value: 5
+      value: 90000000
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: canAttack

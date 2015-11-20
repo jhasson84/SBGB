@@ -12,7 +12,6 @@ public class Pathfinding : MonoBehaviour {
 
 	void Awake() {
 		requestManager = GetComponent<PathRequestManager>();
-		grid = GetComponent<Grid>();
 	}
 	
 
@@ -21,7 +20,7 @@ public class Pathfinding : MonoBehaviour {
 	}
 
 	IEnumerator FindPath(Vector3 startPos, Vector3 targetPos) {
-
+		grid = GetComponent<Grid>();
 		Stopwatch sw = new Stopwatch();
 		sw.Start();
 
