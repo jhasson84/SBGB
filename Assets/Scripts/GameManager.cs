@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public BoardManager boardScript;
 	public TurnManager turnScript;
+	public Grid gridScript;
 	public Text levelCounter;
 	public Text shipGoldCounter;
 	public Text totalGoldCounter;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 		boardScript = GetComponent<BoardManager> ();
 		turnScript = GetComponent<TurnManager> ();
+		gridScript = GetComponent<Grid> ();
 		InitGame ();
 	}
 	
@@ -35,6 +37,9 @@ public class GameManager : MonoBehaviour {
 	{
 		boardScript.SetupScene (level);
 		turnScript.initObjects (boardScript.getObjectList ());
+		gridScript.gridWorldSize.x = boardScript.columns * boardScript.scale;
+		gridScript.gridWorldSize.y = boardScript.rows * boardScript.scale;
+		gridScript.nodeRadius = boardScript.scale;
 		levelCounter.text = "LEVEL " + level;
 	}
 	
