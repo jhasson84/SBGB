@@ -26,11 +26,13 @@ public class BoardManager : MonoBehaviour {
 	public Count treasureCount = new Count (1, 5); //Lower and upper limit for our random number of food per level.
 
 	public GameObject homeBase;
+	public GameObject player;
 	public GameObject[] oceanTiles;
 	public GameObject[] islandTiles;
 	public GameObject[] treasureTiles;
 	public GameObject[] enemyTiles;
 	public GameObject[] outerWallTiles;
+	public List<GameObject> instantiatedObjects;
 	
 	private Transform boardHolder;
 	private List <Vector3> gridPositions = new List<Vector3>(); //A list of possible locations to place tiles.
@@ -85,15 +87,24 @@ public class BoardManager : MonoBehaviour {
 		for (int i = 0; i < objectCount; i++) {
 			Vector3 randomPosition = RandomPosition(); //from the decomposed board, removed so not used again
 			GameObject tileChoice = tileArray[Random.Range (0, tileArray.Length)]; //random tile from arg array
-			Instantiate(tileChoice,randomPosition, Quaternion.identity);
+			GameObject thing = Instantiate(tileChoice,randomPosition, Quaternion.identity);
+			if(thing.tag = "Enemy")
+				instantiatedObjects.push(thing);
 		}
 	}
-	
+
+	public List<GameObject> getObjectList()
+	{
+		return instantiatedObjects;
+	}
+
 	//Build scene according to level number
 	public void SetupScene(int level)
 	{
 		BoardSetup ();
 		InitialiseList ();
+		//Player in lower left corner
+		instantiatedObjects.push(Instantiate (player, new Vector3 (columns+1, 1f, rows+1, Quaternion.identity)));
 		//Layout Level Objects
 		LayoutObjectAtRandom (treasureTiles, treasureCount.minimum, treasureCount.maximum);
 		int enemyCount = 2;//(int)Mathf.Log (level, 2f);
