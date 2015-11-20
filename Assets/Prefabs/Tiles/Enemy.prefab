@@ -13,6 +13,7 @@ GameObject:
   - 54: {fileID: 5483524}
   - 65: {fileID: 6583524}
   - 114: {fileID: 11431012}
+  - 114: {fileID: 11461478}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -103,6 +104,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 499270, guid: ba8f2561ea23a417aa4d20cc7f0f23d6, type: 2}
   speed: 1
+--- !u!114 &11461478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7443a19363b2a4a13ad7a657e259f4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  canAttack: 0
+  movesLeft: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
