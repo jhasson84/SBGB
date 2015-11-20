@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class Player : MonoBehaviour
+public class Player : Turn
 {
   public GameObject explosion;
   private GameObject target;
@@ -14,21 +14,25 @@ public class Player : MonoBehaviour
   
   void Update ()
   {
-    Move();
+    if(active)
+    {
+      if(movesLeft < 1)
+        EndTurn();
+      Move();
+      
+    }
   }
   void Move()
   {
+    
     RaycastHit hit;
     if(Input.GetButtonDown("Fire1") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
     {
       dest.position = new Vector3(hit.point.x, 1, hit.point.z) ;
-
+      
       PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
       
-    }
-    //if(TDistanceAway(dest) > satRadius)
-      //transform.position = Vector3.MoveTowards(transform.position, dest.position, speed * Time.deltaTime);
-      
+    } 
   }
   public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
   {
@@ -50,7 +54,8 @@ public class Player : MonoBehaviour
       if(VDistanceAway(currentWaypoint) < satRadius)
       {
         targetIndex++;
-        if(targetIndex >= path.Length)
+        movesLeft--;
+        if(targetIndex >= path.Length || !active)
           yield break;
         currentWaypoint = path[targetIndex];
       }
@@ -101,6 +106,7 @@ public class Player : MonoBehaviour
     print(c.name + c.tag);
     if(c.gameObject.tag.Equals("Enemy") && ReadyToFire())
     {
+      movesLeft--;
       Shoot(c.gameObject);
       dest.position = transform.position;
       Destroy(c.gameObject, 1);
