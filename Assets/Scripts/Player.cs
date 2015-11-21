@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class Player : Turn
+public class Player : Unit
 {
-  public GameObject explosion;
-  private GameObject target;
+  public GameObject explosion, shootTarget;
   private float lastFired;
   public float timeBetweenShots, fireRadius, speed, satRadius;
   public Transform dest;
-  public Vector3[] path;
+  //public Vector3[] path;
   public Vector3 currentWaypoint;
   int targetIndex;
   void Awake()
@@ -17,57 +16,32 @@ public class Player : Turn
   }
   void Update ()
   {
-    if(active)
+    if(turnActive)
     {
       if(movesLeft < 1)
       {
         EndTurn();
         StopCoroutine("FollowPath");
       }
-      Move();
+      TurnPhase();
       
     }
   }
-  void Move()
-  {
-    
-    RaycastHit hit;
-    if(Input.GetButtonDown("Fire1") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+    void TurnPhase()
     {
-      dest.position = new Vector3(hit.point.x, 1, hit.point.z) ;
-      
-      PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
-      
-    } 
-  }
-  public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
-  {
-    print("onpath");
-    if (pathSuccessful)
-    {
-      path = newPath;
-      StopCoroutine("FollowPath");
-      StartCoroutine("FollowPath");
-    }
-  }
-  IEnumerator FollowPath()
-  {
-    targetIndex = 0;
-    currentWaypoint = path[targetIndex];
-    
-    while(true)
-    {
-      if(VDistanceAway(currentWaypoint) < satRadius)
-      {
-        targetIndex++;
-        movesLeft--;
-        if(targetIndex >= path.Length || !active)
-          yield break;
-        currentWaypoint = path[targetIndex];
-      }
-      transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-      yield return null;
-    }
+
+        RaycastHit hit;
+        if (Input.GetButtonDown("Fire2") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+        {
+            dest.position = new Vector3(hit.point.x, 1, hit.point.z);
+
+            PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
+        }
+        if (Input.GetButtonDown("Fire1") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+        {
+            if (hit.collider.gameObject.tag == "Enemy")
+                DisplayInfo(hit.collider.gameObject);
+        }
   }
   void Shoot(GameObject obj) 
   {
@@ -82,13 +56,19 @@ public class Player : Turn
    */
   Transform Target(GameObject o)
   {
-    if(!target)
-      target = o;
-    if(GODistanceAway(target) > fireRadius)
-      target = o;
-    return target.transform;
+
+    if(!shootTarget)
+      shootTarget = o;
+    if(GODistanceAway(shootTarget) > fireRadius)
+      shootTarget = o;
+    return shootTarget.transform;
   }
-  float GODistanceAway(GameObject a)
+    void DisplayInfo(GameObject o)
+    {
+        var unit = gameObject.GetComponent<Unit>();
+        unit.StartCoroutine("ShowStats");
+    }
+    float GODistanceAway(GameObject a)
   {
     return (a.transform.position - transform.position).magnitude;
   }

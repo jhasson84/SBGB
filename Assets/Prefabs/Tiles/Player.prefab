@@ -116,7 +116,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -178,16 +180,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f493ce0c5f1464f2e83fa1f9d06c3558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
-  canAttack: 1
+  target: {fileID: 0}
   movesLeft: 500000000
+  turnActive: 1
+  canAttack: 1
+  displayStats: 0
+  health: 0
+  healthMax: 0
+  attackRating: 0
+  defenseRating: 0
+  healthBarSize: {x: 0, y: 0}
+  screenPos: {x: 0, y: 0}
+  emptyHealth: {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
+  fullHealth: {fileID: 0}
+  xOffset: 0
+  yOffset: 0
   explosion: {fileID: 168296, guid: acb57e417079b42df9afbd5fc05bfbe8, type: 2}
+  shootTarget: {fileID: 0}
   timeBetweenShots: 2
   fireRadius: 1
   speed: 200
   satRadius: .100000001
   dest: {fileID: 0}
-  path: []
   currentWaypoint: {x: 0, y: 0, z: 0}
 --- !u!124 &12484940
 Behaviour:
@@ -246,6 +260,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: emptyHealth
+      value: 
+      objectReference: {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 0}
+      propertyPath: turnActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

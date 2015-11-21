@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TurnManager : MonoBehaviour {
 
 	static int currentTurnCounter;
-	static List<Turn> allObjects;
+	static List<Unit> allObjects;
 
 	public static TurnManager instance = null;
 	
@@ -17,15 +17,15 @@ public class TurnManager : MonoBehaviour {
 			Destroy (gameObject);
 
 
-		int currentTurnCounter = 0;
+		currentTurnCounter = 0;
 	}
 
 	public void initObjects(List<GameObject> insertedObjects)
 	{
-		allObjects = new List<Turn>();
+		allObjects = new List<Unit>();
 
 		foreach (GameObject o in insertedObjects)
-			allObjects.Add (o.GetComponent<Turn> ());
+			allObjects.Add (o.GetComponent<Unit> ());
 
 	}
 
