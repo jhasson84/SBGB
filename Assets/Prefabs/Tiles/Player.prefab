@@ -185,16 +185,16 @@ MonoBehaviour:
   turnActive: 1
   canAttack: 1
   displayStats: 0
-  health: 0
-  healthMax: 0
-  attackRating: 0
-  defenseRating: 0
-  healthBarSize: {x: 0, y: 0}
+  health: 15
+  healthMax: 15
+  attackRating: 15
+  defenseRating: 15
+  healthBarSize: {x: 100, y: 15}
   screenPos: {x: 0, y: 0}
-  emptyHealth: {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
-  fullHealth: {fileID: 0}
-  xOffset: 0
-  yOffset: 0
+  emptyHealth: {fileID: 2800000, guid: 3a72f5768a1e7d345b22f092ab8c48d9, type: 3}
+  fullHealth: {fileID: 2800000, guid: 8eb5a6ac1914e654191d9aad04841791, type: 3}
+  xOffset: -50
+  yOffset: -50
   explosion: {fileID: 168296, guid: acb57e417079b42df9afbd5fc05bfbe8, type: 2}
   shootTarget: {fileID: 0}
   timeBetweenShots: 2
@@ -264,11 +264,51 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: emptyHealth
       value: 
-      objectReference: {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2800000, guid: 3a72f5768a1e7d345b22f092ab8c48d9, type: 3}
     - target: {fileID: 0}
       propertyPath: turnActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: displayStats
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthMax
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackRating
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defenseRating
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthBarSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthBarSize.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: xOffset
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: yOffset
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fullHealth
+      value: 
+      objectReference: {fileID: 2800000, guid: 8eb5a6ac1914e654191d9aad04841791, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169312}

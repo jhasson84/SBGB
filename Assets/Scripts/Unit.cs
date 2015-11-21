@@ -52,8 +52,7 @@ public class Unit : MonoBehaviour {
     }
     void OnGUI()
     {
-        if (displayStats)
-        {
+        
             screenPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
             screenPos = new Vector2(screenPos.x + xOffset, Screen.height - screenPos.y + yOffset);                       
             GUI.BeginGroup(new Rect(screenPos.x, screenPos.y, healthBarSize.x, healthBarSize.y));
@@ -62,6 +61,9 @@ public class Unit : MonoBehaviour {
             GUI.Box(new Rect(0, 0, healthBarSize.x, healthBarSize.y), fullHealth);
             GUI.EndGroup();
             GUI.EndGroup();
+        if (displayStats)
+        {
+
         }
     }
     public void StartTurn()
