@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class Player : Unit
 {
-  public GameObject explosion, shootTarget;
+  public GameObject shootTarget;
   private float lastFired;
   public float timeBetweenShots, fireRadius, speed, satRadius;
   public Transform dest;
@@ -89,10 +89,9 @@ public class Player : Unit
     {
       movesLeft-= 2;
       canAttack = false;
-      Shoot(c.gameObject);
+      Attack(c.gameObject.GetComponent<Unit>());
       StopCoroutine("FollowPath");
       dest.position = transform.position;
-      Destroy(c.gameObject, 1);
     }
     if(c.gameObject.tag.Equals("Treasure"))
     {

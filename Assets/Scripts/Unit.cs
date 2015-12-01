@@ -4,10 +4,12 @@ using System.Collections;
 public class Unit : MonoBehaviour {
 
 
-	public Transform target;
+  public Transform target;
+  public Transform[] cannons;
 	float speed = 20;
 	Vector3[] path;
 	int targetIndex;
+  public GameObject explosion, cannonball;
     public int movesLeft;
     public bool turnActive, canAttack, displayStats;
     public float health, healthMax;
@@ -93,8 +95,43 @@ public class Unit : MonoBehaviour {
 			}
 		}
 	}
-    public void Attack(GameObject o)
+    public void Attack(Unit other)
     {
+      //shoot cannon balls at other
+      var dir = other.transform.position - transform.position;
+      dir.y = 0;
+      var dist = dir.magnitude;
+      var angle = 60 * Mathf.Deg2Rad;
+      dir.y = dist * Mathf.Tan(angle);
+      var vel = Mathf.Sqrt(dist * Physics.gravity.magnitude /  Mathf.Sin(2*angle)) * dir.normalized;
+      StartCoroutine("ShootCannonBalls", vel);
+      StartCoroutine("Explosion", other.transform.position);
+
+      other.health -= attackRating/other.defenseRating;
+
+      if(other.health <= 0)
+      {
+        Destroy(other.gameObject, 1);
+        //drop gold other is holding
         
+      }
     }
+  IEnumerator Explosion(Vector3 tar)
+  {
+    yield return new WaitForSeconds(1.5f);
+    Destroy(Instantiate(explosion, tar, Quaternion.identity), 2.5f);
+    yield return null;
+  }
+  IEnumerator ShootCannonBalls(Vector3 vel)
+  {
+    foreach(var t in cannons)
+    {
+      
+      var ball = (GameObject)Instantiate(cannonball, t.position, Quaternion.identity);
+      ball.GetComponent<Rigidbody>().velocity = vel;
+      Destroy(ball, 2);
+      yield return new WaitForSeconds(.5f);
+    }
+    yield return null;
+  }
 }
