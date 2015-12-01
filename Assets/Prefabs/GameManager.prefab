@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab38e9e7ce9a464e88290bd1781bf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 142714, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
   boardScript: {fileID: 0}
   turnScript: {fileID: 0}
   gridScript: {fileID: 0}
@@ -165,7 +166,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HUD
       value: 
-      objectReference: {fileID: 108646, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
+      objectReference: {fileID: 142714, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: 0

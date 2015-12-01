@@ -25,6 +25,7 @@ public class TurnManager : MonoBehaviour {
 		allObjects = new List<Unit>();
 
 		foreach (GameObject o in insertedObjects)
+			if(o != null)
 			allObjects.Add (o.GetComponent<Unit> ());
 
 	}
