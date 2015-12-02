@@ -7,7 +7,7 @@ public class EnemyMove : Unit {
 	int refreshPath = 0;
   public float sightRadius;
 	public Transform target;
-  GameObject[] treasureTiles, oceanTiles;
+  public GameObject[] treasureTiles, oceanTiles;
   GameObject player;
   float turnTime;
 	void Start(){
@@ -16,12 +16,13 @@ public class EnemyMove : Unit {
                 oceanTiles = GameObject.FindGameObjectsWithTag("Ocean");
                 treasureTiles = GameObject.FindGameObjectsWithTag("Treasure");
                 player = GameObject.FindGameObjectWithTag("Player");
-                
+                turnActive = false;
 	}
   void Update()
   {
     if(turnActive && movesLeft > 0)
     {
+
       var i = (int) ((oceanTiles.Length-1) * Random.value);
       target.position = oceanTiles[i].transform.position;
       foreach(var t in treasureTiles)
