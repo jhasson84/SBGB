@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
 	public void InitGame () 
 	{
 		boardScript.SetupScene (level);
-		turnScript.initObjects (boardScript.getObjectList ());
+		turnScript.initObjects ();
 		gridScript.gridWorldSize = new Vector2(boardScript.columns * boardScript.scale, boardScript.rows * boardScript.scale);
 		gridScript.nodeRadius = boardScript.scale/2;
 		gridScript.CreateGrid ();

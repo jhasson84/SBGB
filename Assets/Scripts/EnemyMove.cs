@@ -44,7 +44,7 @@ public class EnemyMove : Unit {
   }
 
 	//collects treasure!!
-	void OnTriggerEnter2D(Collider2D co){
+	void OnTriggerEnter(Collider co){
 		
 		if (co.gameObject.tag == "Treasure")
                 {
