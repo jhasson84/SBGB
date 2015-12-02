@@ -50,31 +50,49 @@ public class GameManager : MonoBehaviour {
 		}
                 else if (nextLevel)
                 {
+                  var gold= 0;
+                  var maxHealth = 0;
+                  var defense = 0;
+                  var attack = 0;
+
                   GUI.Box(new Rect(10, 10, Screen.width - 10, Screen.height -10), "Level up");
-                  if((player && player.gold > 10) || true)
+                  if((player && player.gold > 10))
                   {
                     if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 10), "Add Attack"))
                     {
-                      
+                      player.gold -= 10;
+                      player.attackRating += 5;
                     }
                     if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + Screen.height / 10, Screen.width / 2, Screen.height / 10), "Add Defense"))
                     {
-                      
+                      player.gold -= 10;
+                      player.defenseRating += 5;
                     }
                     if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + Screen.height / 5, Screen.width / 2, Screen.height / 10), "Add Health"))
                     {
-                      
-                    }
-                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + 3 * Screen.height / 10, Screen.width / 2, Screen.height / 10), "Add Defense"))
-                    {
-                      
-                    }
-                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + 4 * Screen.height / 10, Screen.width / 2, Screen.height / 10), "Start Next Level"))
-                    {
-                      
+                      player.gold -= 10;
+                      player.healthMax += 10;
                     }
                     
                   }
+                  if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + 3 * Screen.height / 10, Screen.width / 2, Screen.height / 10), "Start Next Level"))
+                  {
+                    gold = player.gold;
+                    maxHealth = (int)player.healthMax;
+                    defense = player.defenseRating;
+                    attack = player.attackRating;
+                    level += 1;
+                    instance.gameOver();
+                    instance.InitGame();
+                    Instantiate(HUD);
+                    nextLevel = false;
+                    player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
+                    player.gold = gold;
+                    player.healthMax = maxHealth;
+                    player.attackRating = attack;
+                    player.defenseRating = defense;
+                  }
+
                 }
                 else {
 			if (GUI.Button (new Rect (4, 4, 80, 40), "End")) {

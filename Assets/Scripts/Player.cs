@@ -95,9 +95,10 @@ public class Player : Unit
     }
     if(c.gameObject.tag.Equals("Treasure"))
     {
+      gold += c.gameObject.GetComponent<Treasure>().gold;
       Destroy(c.gameObject);
     }
-    if(c.gameObject.tag.Equals("HomeBase"))
+    if(c.gameObject.tag.Contains("Home"))
     {
       print("nextLevel");
       GameManager.startNextLevel(this);

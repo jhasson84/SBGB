@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2344196}
   - 54: {fileID: 5424396}
   - 65: {fileID: 6506690}
+  - 114: {fileID: 11485900}
   m_Layer: 8
   m_Name: Treasure1
   m_TagString: Treasure
@@ -91,6 +92,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.22044605e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11485900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee4aeee8cc5f4c54a0197edc571ca9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

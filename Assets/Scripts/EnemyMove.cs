@@ -5,59 +5,56 @@ public class EnemyMove : Unit {
 	
 	//destination for ghost movements
 	int refreshPath = 0;
+  public float sightRadius;
 	public Transform target;
-	public float speed;
-	Vector3[] path;
-	Vector3 currentWaypoint;
-	int targetIndex;
-
-
+  GameObject[] treasureTiles, oceanTiles;
+  GameObject player;
+  float turnTime;
 	void Start(){
-		PathRequestManager.RequestPath (transform.position, target.position, OnPathFound);	
+                target = new GameObject().transform;
+                target.transform.position = transform.position;
+                oceanTiles = GameObject.FindGameObjectsWithTag("Ocean");
+                treasureTiles = GameObject.FindGameObjectsWithTag("Treasure");
+                player = GameObject.FindGameObjectWithTag("Player");
+                
 	}
-	
-	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
-		if (pathSuccessful) {
-			path = newPath;
-			StopCoroutine("FollowPath");
-			StartCoroutine("FollowPath");
-		}
-	}
-	
-	IEnumerator FollowPath() {
-		currentWaypoint = path [0];
-		while (true) {
-			if (transform.position == currentWaypoint){
-				targetIndex++;
-				if(targetIndex >= path.Length){
-					yield break;
-				}
-				currentWaypoint = path[targetIndex];
-			}
-			transform.position = Vector3.MoveTowards (transform.position,currentWaypoint,speed * Time.deltaTime);
-			yield return null;
-		}
-	}
-	
-	
-	void FixedUpdate () {
-		if (refreshPath == 8) {
-			PathRequestManager.RequestPath (transform.position, target.position, OnPathFound);
-			refreshPath=0;
-		} else {
-			refreshPath++;
-		}
-		
-		//Vector2 dir = currentWaypoint - transform.position;
-		//GetComponent<Animator>().SetFloat("DirX", dir.x);
-		//GetComponent<Animator>().SetFloat("DirY", dir.y);
-	}
+  void Update()
+  {
+    if(turnActive && movesLeft > 0)
+    {
+      var i = (int) ((oceanTiles.Length-1) * Random.value);
+      target.position = oceanTiles[i].transform.position;
+      foreach(var t in treasureTiles)
+      {
+        if(Mathf.Abs((t.transform.position - transform.position).magnitude) < sightRadius)
+          target.position = t.transform.position;
+      }
+       if(Mathf.Abs((player.transform.position - transform.position).magnitude) < sightRadius)
+          target.position = player.transform.position;
+       PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+       turnActive = false;
+    }
+    if(movesLeft < 1)
+      EndTurn();
+    if(turnTime > 5)
+      EndTurn();
+    turnTime += Time.deltaTime;
+
+  }
 
 	//collects treasure!!
 	void OnTriggerEnter2D(Collider2D co){
 		
-		if (co.name == "treasure1")
-			Destroy (co.gameObject);
+		if (co.gameObject.tag == "Treasure")
+                {
+                  gold += co.gameObject.GetComponent<Treasure>().gold;
+                  Destroy (co.gameObject);
+                }
+                if (co.gameObject.tag == "Player")
+                {
+                  Attack(co.gameObject.GetComponent<Unit>());
+                }
+		
 		
 	}
 	

@@ -269,9 +269,11 @@ MonoBehaviour:
   - {fileID: 458784}
   - {fileID: 418412}
   - {fileID: 432406}
+  path: []
   explosion: {fileID: 168296, guid: acb57e417079b42df9afbd5fc05bfbe8, type: 2}
   cannonball: {fileID: 155892, guid: b03ac204059594543bc7b1217ed16c66, type: 2}
-  movesLeft: 500000000
+  treasure: {fileID: 105626, guid: 11df857f9e57241b7b403a0f86a339f5, type: 2}
+  movesLeft: 5
   turnActive: 1
   canAttack: 1
   displayStats: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   healthMax: 15
   attackRating: 15
   defenseRating: 15
+  gold: 0
   healthBarSize: {x: 100, y: 15}
   screenPos: {x: 0, y: 0}
   emptyHealth: {fileID: 2800000, guid: 3a72f5768a1e7d345b22f092ab8c48d9, type: 3}
@@ -324,7 +327,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movesLeft
-      value: 500000000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: canAttack
@@ -406,6 +409,10 @@ Prefab:
       propertyPath: cannonball
       value: 
       objectReference: {fileID: 155892, guid: b03ac204059594543bc7b1217ed16c66, type: 2}
+    - target: {fileID: 0}
+      propertyPath: treasure
+      value: 
+      objectReference: {fileID: 105626, guid: 11df857f9e57241b7b403a0f86a339f5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169312}

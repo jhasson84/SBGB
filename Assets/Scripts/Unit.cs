@@ -7,9 +7,9 @@ public class Unit : MonoBehaviour {
   public Transform target;
   public Transform[] cannons;
 	float speed = 20;
-	Vector3[] path;
+  public Vector3[] path;
 	int targetIndex;
-  public GameObject explosion, cannonball;
+  public GameObject explosion, cannonball, treasure;
     public int movesLeft;
     public bool turnActive, canAttack, displayStats;
     public float health, healthMax;
@@ -112,9 +112,11 @@ public class Unit : MonoBehaviour {
 
       if(other.health <= 0)
       {
+        var t = Instantiate(treasure);
+        t.GetComponent<Treasure>().gold = other.gold;
         Destroy(other.gameObject, 1);
-        //drop gold other is holding
-        
+
+
       }
     }
   IEnumerator Explosion(Vector3 tar)
@@ -136,3 +138,4 @@ public class Unit : MonoBehaviour {
     yield return null;
   }
 }
+
