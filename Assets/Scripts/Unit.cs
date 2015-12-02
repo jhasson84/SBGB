@@ -79,6 +79,8 @@ public class Unit : MonoBehaviour {
     public void EndTurn()
     {
         turnActive = false;
+        canAttack = false;
+        StopCoroutine("FollowPath");
         TurnManager.nextTurn();
     }
 

@@ -10,6 +10,7 @@ public class EnemyMove : Unit {
   public GameObject[] treasureTiles, oceanTiles;
   GameObject player;
   float turnTime;
+  bool turnStarted;
 	void Start(){
                 target = new GameObject().transform;
                 target.transform.position = transform.position;
@@ -17,29 +18,38 @@ public class EnemyMove : Unit {
                 treasureTiles = GameObject.FindGameObjectsWithTag("Treasure");
                 player = GameObject.FindGameObjectWithTag("Player");
                 turnActive = false;
+                turnStarted = false;
 	}
   void Update()
   {
-    if(turnActive && movesLeft > 0)
+    if(turnActive && movesLeft > 0 && !turnStarted)
     {
-
+      turnTime = 0;
       var i = (int) ((oceanTiles.Length-1) * Random.value);
       target.position = oceanTiles[i].transform.position;
+      treasureTiles = GameObject.FindGameObjectsWithTag("Treasure");
       foreach(var t in treasureTiles)
       {
         if(Mathf.Abs((t.transform.position - transform.position).magnitude) < sightRadius)
           target.position = t.transform.position;
       }
+      if(player == null)
+        player = GameObject.FindGameObjectWithTag("Player");
        if(Mathf.Abs((player.transform.position - transform.position).magnitude) < sightRadius)
           target.position = player.transform.position;
        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
-       turnActive = false;
+       turnStarted = true;
     }
-    if(movesLeft < 1)
-      EndTurn();
-    if(turnTime > 5)
-      EndTurn();
-    turnTime += Time.deltaTime;
+    if(turnStarted && turnActive)
+    {
+      turnTime += Time.deltaTime;
+      if(turnTime > 5)
+        EndTurn();
+    }
+    else
+    {
+      turnStarted = false;
+    }
 
   }
 
@@ -49,9 +59,10 @@ public class EnemyMove : Unit {
 		if (co.gameObject.tag == "Treasure")
                 {
                   gold += co.gameObject.GetComponent<Treasure>().gold;
+                   treasureTiles = GameObject.FindGameObjectsWithTag("Treasure");
                   Destroy (co.gameObject);
                 }
-                if (co.gameObject.tag == "Player")
+                if (co.gameObject.tag == "Player" && canAttack)
                 {
                   Attack(co.gameObject.GetComponent<Unit>());
                 }
