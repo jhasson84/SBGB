@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public Text shipGoldCounter;
 	public Text totalGoldCounter;
 	
-	bool menuActive = true;
+  bool menuActive = true, nextLevel = false;
 	
 	private int level = 1;
 
@@ -46,7 +46,13 @@ public class GameManager : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + Screen.height / 10, Screen.width / 2, Screen.height / 10), "Quit")) {
 				Application.Quit ();
 			}
-		} else {
+		}
+                else if (nextLevel)
+                {
+                  GUI.Box(new Rect(10, 10, Screen.width - 10, Screen.height -10), "Level up");
+                  
+                }
+                else {
 			if (GUI.Button (new Rect (4, 4, 80, 40), "End")) {
 				instance.gameOver();
 				menuActive = true;

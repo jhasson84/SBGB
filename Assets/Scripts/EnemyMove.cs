@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMove : MonoBehaviour {
+public class EnemyMove : Unit {
 	
 	//destination for ghost movements
 	int refreshPath = 0;
