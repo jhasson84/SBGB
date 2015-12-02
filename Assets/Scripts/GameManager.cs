@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour {
 	public Text levelCounter;
 	public Text shipGoldCounter;
 	public Text totalGoldCounter;
-	
-  bool menuActive = true, nextLevel = false;
+  static Unit player;
+  bool menuActive = true;
+  public static bool nextLevel = false;
 	
 	private int level = 1;
 
@@ -44,13 +45,36 @@ public class GameManager : MonoBehaviour {
 
 			//Not sure how to quit the game
 			if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + Screen.height / 10, Screen.width / 2, Screen.height / 10), "Quit")) {
-				Application.Quit ();
+                          Application.Quit ();
 			}
 		}
                 else if (nextLevel)
                 {
                   GUI.Box(new Rect(10, 10, Screen.width - 10, Screen.height -10), "Level up");
-                  
+                  if((player && player.gold > 10) || true)
+                  {
+                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 10), "Add Attack"))
+                    {
+                      
+                    }
+                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + Screen.height / 10, Screen.width / 2, Screen.height / 10), "Add Defense"))
+                    {
+                      
+                    }
+                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + Screen.height / 5, Screen.width / 2, Screen.height / 10), "Add Health"))
+                    {
+                      
+                    }
+                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + 3 * Screen.height / 10, Screen.width / 2, Screen.height / 10), "Add Defense"))
+                    {
+                      
+                    }
+                    if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + 4 * Screen.height / 10, Screen.width / 2, Screen.height / 10), "Start Next Level"))
+                    {
+                      
+                    }
+                    
+                  }
                 }
                 else {
 			if (GUI.Button (new Rect (4, 4, 80, 40), "End")) {
@@ -69,6 +93,12 @@ public class GameManager : MonoBehaviour {
 		gridScript.CreateGrid ();
 		levelCounter.text = "LEVEL " + level;
 	}
+
+  public static void startNextLevel(Unit u)
+  {
+    nextLevel = true;
+    player = u;
+  }
 
 	public void gameOver()
 	{

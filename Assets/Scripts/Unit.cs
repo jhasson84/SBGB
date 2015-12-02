@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour {
     public float health, healthMax;
     public int attackRating;
     public int defenseRating;
+  public int gold;
     public Vector2 healthBarSize, screenPos;
     public Texture2D emptyHealth;
     public Texture2D fullHealth;

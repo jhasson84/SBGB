@@ -97,7 +97,13 @@ public class Player : Unit
     {
       Destroy(c.gameObject);
     }
-    
+    if(c.gameObject.tag.Equals("HomeBase"))
+    {
+      print("nextLevel");
+      GameManager.startNextLevel(this);
+
+    }
+            
   }
 }
 
