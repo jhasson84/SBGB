@@ -50,9 +50,9 @@ public class EnemyMove : Unit {
       turnTime += Time.deltaTime;
 	  //this sets the parameters for the transitions between the animations states
 	  //testing the animation update
-	  Vector3 dir = target.position - transform.position;
-	  animator.SetFloat ("DirX",dir.x);
-	  animator.SetFloat ("DirZ",dir.z);
+	  Vector3 direction = target.position - transform.position;
+	  animator.SetFloat ("DirX",direction.x);
+	  animator.SetFloat ("DirZ",direction.z);
       if(turnTime > 5)
         EndTurn();
     }
