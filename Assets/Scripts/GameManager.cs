@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour {
                     instance.InitGame();
                     Instantiate(HUD);
                     nextLevel = false;
-                    player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
+                    //player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
                     player.gold = gold;
                     player.healthMax = maxHealth;
                     player.attackRating = attack;
@@ -109,7 +109,12 @@ public class GameManager : MonoBehaviour {
 		gridScript.gridWorldSize = new Vector2(boardScript.columns * boardScript.scale, boardScript.rows * boardScript.scale);
 		gridScript.nodeRadius = boardScript.scale/2;
 		gridScript.CreateGrid ();
+
+		//moved this to initgame so we can access player gold to display to this screen
+		//player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
+
 		levelCounter.text = "LEVEL " + level;
+		totalGoldCounter.text = "Gold: " + player.gold;
 	}
 
   public static void startNextLevel(Unit u)
