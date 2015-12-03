@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class EnemyMove : Unit {
+
+
+	public Animator animator;
 	
 	//destination for ghost movements
 	int refreshPath = 0;
@@ -19,6 +22,7 @@ public class EnemyMove : Unit {
                 player = GameObject.FindGameObjectWithTag("Player");
                 turnActive = false;
                 turnStarted = false;
+				animator = GetComponentInChildren<Animator> ();
 	}
   void Update()
   {
@@ -42,7 +46,13 @@ public class EnemyMove : Unit {
     }
     if(turnStarted && turnActive)
     {
+	  
       turnTime += Time.deltaTime;
+	  //this sets the parameters for the transitions between the animations states
+	  //testing the animation update
+	  Vector3 dir = target.position - transform.position;
+	  animator.SetFloat ("DirX",dir.x);
+	  animator.SetFloat ("DirZ",dir.z);
       if(turnTime > 5)
         EndTurn();
     }
@@ -51,6 +61,8 @@ public class EnemyMove : Unit {
       turnStarted = false;
     }
 
+
+		
   }
 
 	//collects treasure!!
