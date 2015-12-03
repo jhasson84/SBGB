@@ -9,10 +9,15 @@ public class Player : Unit
   public Transform dest;
   //public Vector3[] path;
   public Vector3 currentWaypoint;
+
+  //for the animation... apt variable name
+  public Animator animator;
+
   int targetIndex;
   void Awake()
   {
     dest = new GameObject("dest").transform;
+	animator = GetComponentInChildren<Animator> ();
   }
   void Update ()
   {
@@ -34,6 +39,11 @@ public class Player : Unit
         if (Input.GetButtonDown("Fire2") && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
             dest.position = new Vector3(hit.point.x, 1, hit.point.z);
+			//this sets the parameters for the transitions between the animations states
+			//testing the animation update
+			Vector3 dir = dest.position - transform.position;
+			animator.SetFloat ("DirX",dir.x);
+			animator.SetFloat ("DirZ",dir.z);
 
             PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
         }

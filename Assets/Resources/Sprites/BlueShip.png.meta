@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 90637953c3d2b214da441588d3419dde
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BlueShip_0
+    21300002: BlueShip_1
+    21300004: BlueShip_2
+    21300006: BlueShip_3
+    21300008: BlueShip_4
+    21300010: BlueShip_5
+    21300012: BlueShip_6
+    21300014: BlueShip_7
+    21300016: BlueShip_8
+    21300018: BlueShip_9
+    21300020: BlueShip_10
+    21300022: BlueShip_11
+    21300024: BlueShip_12
+    21300026: BlueShip_13
+    21300028: BlueShip_14
+    21300030: BlueShip_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BlueShip_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 579
+        width: 96
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_1
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 578
+        width: 96
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_2
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 579
+        width: 96
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_3
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 578
+        width: 96
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_4
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 394
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_5
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 394
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_6
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 394
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_7
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 394
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 202
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_9
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 202
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_10
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 202
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_11
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 202
+        width: 175
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_12
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1
+        width: 91
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_13
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1
+        width: 91
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_14
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1
+        width: 91
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BlueShip_15
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1
+        width: 91
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
