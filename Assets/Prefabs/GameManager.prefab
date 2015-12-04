@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab38e9e7ce9a464e88290bd1781bf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HUD: {fileID: 142714, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
+  HUD: {fileID: 156930, guid: 1e1ef92a695866947a7c3bca6861a981, type: 2}
   boardScript: {fileID: 0}
   turnScript: {fileID: 0}
   gridScript: {fileID: 0}
-  levelCounter: {fileID: 11484440, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
+  levelCounter: {fileID: 11447768, guid: 1e1ef92a695866947a7c3bca6861a981, type: 2}
   shipGoldCounter: {fileID: 0}
-  totalGoldCounter: {fileID: 0}
+  totalGoldCounter: {fileID: 11406070, guid: 1e1ef92a695866947a7c3bca6861a981, type: 2}
 --- !u!114 &11428856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +166,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HUD
       value: 
-      objectReference: {fileID: 142714, guid: 5175c717b0aa54751bbe3d0feb9f6b96, type: 2}
+      objectReference: {fileID: 156930, guid: 1e1ef92a695866947a7c3bca6861a981, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -174,7 +174,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: levelCounter
       value: 
-      objectReference: {fileID: 11484440, guid: 5175c717b0aa54751bbe3d0feb9f6b96,
+      objectReference: {fileID: 11447768, guid: 1e1ef92a695866947a7c3bca6861a981,
         type: 2}
     - target: {fileID: 0}
       propertyPath: rows
@@ -204,6 +204,11 @@ Prefab:
       propertyPath: nodeRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: totalGoldCounter
+      value: 
+      objectReference: {fileID: 11406070, guid: 1e1ef92a695866947a7c3bca6861a981,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136734}

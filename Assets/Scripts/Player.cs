@@ -41,9 +41,9 @@ public class Player : Unit
             dest.position = new Vector3(hit.point.x, 1, hit.point.z);
 			//this sets the parameters for the transitions between the animations states
 			//testing the animation update
-			Vector3 direction = dest.position - transform.position;
-			animator.SetFloat ("DirX",direction.x);
-			animator.SetFloat ("DirZ",direction.z);
+			Vector3 dir = dest.position - transform.position;
+			animator.SetFloat ("DirX",dir.x);
+			animator.SetFloat ("DirZ",dir.z);
 
             PathRequestManager.RequestPath(transform.position, dest.position, OnPathFound);
         }
@@ -106,6 +106,7 @@ public class Player : Unit
     if(c.gameObject.tag.Equals("Treasure"))
     {
       gold += c.gameObject.GetComponent<Treasure>().gold;
+	  GameManager.updatePlayerGold();
       Destroy(c.gameObject);
     }
     if(c.gameObject.tag.Contains("Home"))

@@ -12,8 +12,12 @@ public class GameManager : MonoBehaviour {
 	public Text levelCounter;
 	public Text shipGoldCounter;
 	public Text totalGoldCounter;
+	static Text goldTest;
+
+
   static Unit player;
   bool menuActive = true;
+  bool playerActive = false;
   public static bool nextLevel = false;
 	
 	private int level = 1;
@@ -27,10 +31,12 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 
 		DontDestroyOnLoad (gameObject);
+
 		boardScript = GetComponent<BoardManager> ();
 		turnScript = GetComponent<TurnManager> ();
 		gridScript = GetComponent<Grid> ();
 	}
+		
 
 	void OnGUI () {
 		if (menuActive) {
@@ -40,6 +46,7 @@ public class GameManager : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 10), "Start")) {
 				instance.InitGame ();
 				Instantiate (HUD);
+				goldTest = GameObject.Find ("GoldCounter").GetComponent<Text>();
 				menuActive = false;
 			}
 
@@ -101,9 +108,10 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
 	
 	public void InitGame () 
-	{
+		{
 		boardScript.SetupScene (level);
 		turnScript.initObjects ();
 		gridScript.gridWorldSize = new Vector2(boardScript.columns * boardScript.scale, boardScript.rows * boardScript.scale);
@@ -111,17 +119,23 @@ public class GameManager : MonoBehaviour {
 		gridScript.CreateGrid ();
 
 		//moved this to initgame so we can access player gold to display to this screen
-		//player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
+		player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
+		playerActive = true;
+		levelCounter.text = "Level: " + level;
+		totalGoldCounter.text = "Gold: " +player.gold;
+		}
 
-		levelCounter.text = "LEVEL " + level;
-		totalGoldCounter.text = "Gold: " + player.gold;
-	}
-
-  public static void startNextLevel(Unit u)
-  {
+	public static void startNextLevel(Unit u)
+ 	 	{
     nextLevel = true;
     player = u;
-  }
+ 		 }
+
+	public static void updatePlayerGold(){
+		goldTest.text = "Gold: " + player.gold;
+		}
+
+
 
 	public void gameOver()
 	{

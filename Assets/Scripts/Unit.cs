@@ -116,7 +116,7 @@ public class Unit : MonoBehaviour {
       if(other.health <= 0)
       {
         var t = Instantiate(treasure);
-        //t.GetComponent<Treasure>().gold = other.gold;
+        t.GetComponent<Treasure>().gold = other.gold;
         Destroy(other.gameObject, 1);
 
 
