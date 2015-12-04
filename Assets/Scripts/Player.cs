@@ -9,6 +9,8 @@ public class Player : Unit
   public Transform dest;
   //public Vector3[] path;
   public Vector3 currentWaypoint;
+	//audioclips
+  
 
   //for the animation... apt variable name
   public Animator animator;
@@ -18,6 +20,7 @@ public class Player : Unit
   {
     dest = new GameObject("dest").transform;
 	animator = GetComponentInChildren<Animator> ();
+	
   }
   void Update ()
   {
@@ -106,13 +109,16 @@ public class Player : Unit
     if(c.gameObject.tag.Equals("Treasure"))
     {
       gold += c.gameObject.GetComponent<Treasure>().gold;
+	  SoundManager.instance.playCollectSound();
 	  GameManager.updatePlayerGold();
       Destroy(c.gameObject);
     }
     if(c.gameObject.tag.Contains("Home"))
     {
       print("nextLevel");
+	  
       GameManager.startNextLevel(this);
+	  
 
     }
             

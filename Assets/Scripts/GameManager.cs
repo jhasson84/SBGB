@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject HUD;
 	public BoardManager boardScript;
 	public TurnManager turnScript;
+	public SoundManager soundManager;
 	public Grid gridScript;
 	public Text levelCounter;
 	public Text shipGoldCounter;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour {
 		boardScript = GetComponent<BoardManager> ();
 		turnScript = GetComponent<TurnManager> ();
 		gridScript = GetComponent<Grid> ();
+
 	}
 		
 
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 10), "Start")) {
 				instance.InitGame ();
 				Instantiate (HUD);
+				Instantiate (soundManager);
 				goldTest = GameObject.Find ("GoldCounter").GetComponent<Text>();
 				menuActive = false;
 			}
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour {
 		}
                 else if (nextLevel)
                 {
+				  SoundManager.instance.playLevelSound();
                   var gold= 0;
                   var maxHealth = 0;
                   var defense = 0;
@@ -84,6 +88,7 @@ public class GameManager : MonoBehaviour {
                   }
                   if (GUI.Button (new Rect (Screen.width / 4, Screen.height / 4 + 3 * Screen.height / 10, Screen.width / 2, Screen.height / 10), "Start Next Level"))
                   {
+					
                     gold = player.gold;
                     maxHealth = (int)player.healthMax;
                     defense = player.defenseRating;
@@ -92,6 +97,7 @@ public class GameManager : MonoBehaviour {
                     instance.gameOver();
                     instance.InitGame();
                     Instantiate(HUD);
+					Instantiate (soundManager);
                     nextLevel = false;
                     //player = GameObject.Find("Player(Clone)").GetComponent<Unit>();
                     player.gold = gold;
@@ -142,7 +148,7 @@ public class GameManager : MonoBehaviour {
 		level = 1;
 		GameObject[] objects = GameObject.FindObjectsOfType<GameObject> ();
 		foreach (GameObject o in objects) {
-			if(!(o.name.Contains("GameManager") || o.name.Contains("EmptyObject")||o.name.Contains("Event")||o.name.Contains("Light")))
+			if(!(o.name.Contains("GameManager") ||o.name.Contains ("SoundManager") || o.name.Contains("EmptyObject")||o.name.Contains("Event")||o.name.Contains("Light")))
 				Destroy(o);
 		}
 

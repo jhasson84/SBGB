@@ -47,6 +47,7 @@ MonoBehaviour:
   HUD: {fileID: 156930, guid: 1e1ef92a695866947a7c3bca6861a981, type: 2}
   boardScript: {fileID: 0}
   turnScript: {fileID: 0}
+  soundManager: {fileID: 11435806, guid: c7d4a965e3475564fab01e18cd142983, type: 2}
   gridScript: {fileID: 0}
   levelCounter: {fileID: 11447768, guid: 1e1ef92a695866947a7c3bca6861a981, type: 2}
   shipGoldCounter: {fileID: 0}
@@ -208,6 +209,11 @@ Prefab:
       propertyPath: totalGoldCounter
       value: 
       objectReference: {fileID: 11406070, guid: 1e1ef92a695866947a7c3bca6861a981,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 11435806, guid: c7d4a965e3475564fab01e18cd142983,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

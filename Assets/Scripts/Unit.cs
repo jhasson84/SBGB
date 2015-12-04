@@ -125,6 +125,7 @@ public class Unit : MonoBehaviour {
   IEnumerator Explosion(Vector3 tar)
   {
     yield return new WaitForSeconds(1.5f);
+		SoundManager.instance.playCannonSound ();
     Destroy(Instantiate(explosion, tar, Quaternion.identity), 2.5f);
     yield return null;
   }
